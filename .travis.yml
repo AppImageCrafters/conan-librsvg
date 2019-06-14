@@ -1,7 +1,7 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "librsvg/2.45.6"
+     - CONAN_REFERENCE: "librsvg/2.40.20"
      - CONAN_USERNAME: "appimage-conan-community"
      - CONAN_LOGIN_USERNAME: "azubieta"
      - CONAN_CHANNEL: "stable"
