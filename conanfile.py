@@ -40,6 +40,7 @@ class LibrsvgConan(ConanFile):
                 "gettext:%s" % system_arch,
                 "itstool:%s" % system_arch,
                 "libffi-dev:%s" % system_arch,
+                "gtk-doc-tools:%s" % system_arch,
                 "libcroco3-dev:%s" % system_arch,
                 "libgdk-pixbuf2.0-dev:%s" % system_arch,
                 "gobject-introspection:%s" % system_arch
@@ -68,7 +69,6 @@ class LibrsvgConan(ConanFile):
         new_env = autotools.vars
         new_env["PKG_CONFIG_PATH"] = "%s:%s" % (os.getenv("PKG_CONFIG_PATH"), self.build_folder)
         new_env["PATH"] = "%s:%s" % (os.getenv("PATH"), self.deps_cpp_info["glib"].rootpath + "/bin")
-        print(new_env)
         with tools.environment_append(new_env):
             self.run("NOCONFIGURE=1 librsvg/autogen.sh", run_environment=True)
         autotools.configure(args=['--disable-pixbuf-loader', '--enable-introspection=no'], configure_dir="librsvg")
