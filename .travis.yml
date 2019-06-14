@@ -1,28 +1,27 @@
-
 env:
-   global:
-     - CONAN_REFERENCE: "librsvg/2.40.20"
-     - CONAN_USERNAME: "appimage-conan-community"
-     - CONAN_LOGIN_USERNAME: "azubieta"
-     - CONAN_CHANNEL: "stable"
-     - CONAN_UPLOAD: "https://api.bintray.com/conan/appimage-conan-community/public-conan"
+  global:
+    - CONAN_REFERENCE: "librsvg/2.40.20"
+    - CONAN_USERNAME: "appimage-conan-community"
+    - CONAN_LOGIN_USERNAME: "azubieta"
+    - CONAN_CHANNEL: "stable"
+    - CONAN_UPLOAD: "https://api.bintray.com/conan/appimage-conan-community/public-conan"
 
 linux: &linux
-   os: linux
-   dist: xenial
-   language: python
-   python: "3.7"
-   services:
-     - docker
+  os: linux
+  dist: xenial
+  language: python
+  python: "3.7"
+  services:
+    - docker
 
 matrix:
-   include:
+  include:
 
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=4.8 CONAN_DOCKER_IMAGE=conanio/gcc48
+    - <<: *linux
+      env: CONAN_GCC_VERSIONS=4.8 CONAN_DOCKER_IMAGE=conanio/gcc48  CONAN_ARCHS="x86_64" CONAN_UPLOAD_DEPENDENCIES="all"
 
-      - <<: *linux
-        env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7
+    - <<: *linux
+      env: CONAN_GCC_VERSIONS=7 CONAN_DOCKER_IMAGE=conanio/gcc7  CONAN_ARCHS="x86_64" CONAN_UPLOAD_DEPENDENCIES="all"
 
 
 install:
